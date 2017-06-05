@@ -19,6 +19,7 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "cordova-plugin-vibration",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "nl.x-services.plugins.launchmyapp@4.1.5"
   ]
 }

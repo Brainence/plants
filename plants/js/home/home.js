@@ -41,31 +41,33 @@
          };
          
          $scope.Pour = function(){
-             alert("Cool!");
+             alert("Done!");
          }
          
          $scope.ScanQR = function(){
             cordova.plugins.barcodeScanner.scan(
               function (result) {
-                  var isFinding = false;
-                  var res;
-                  for(i=0; i<$scope.plants.length; i++){
-                     if($scope.plants[i].id == result.text){
-                         res = $scope.plants[i].id;
-                         isFinding = true;
-                         break;
+                  if(!result.cancelled){
+                      var isFinding = false;
+                      var res;
+                      for(i=0; i<$scope.plants.length; i++){
+                         if($scope.plants[i].id == result.text){
+                             res = $scope.plants[i].id;
+                             isFinding = true;
+                             break;
+                         }
                      }
-                 }
-                  if(isFinding == true) {
-                      var r = confirm('Go to ' + result.text + '?');
-                      if (r == true) {
-                          $scope.DetailsPlant(res);
-                          $.mobile.changePage("#page_details");
-                          $("[data-role=panel]").panel("close");
+                      if(isFinding == true) {
+                          var r = confirm('Go to ' + result.text + '?');
+                          if (r == true) {
+                              $scope.DetailsPlant(res);
+                              $.mobile.changePage("#page_details");
+                              $("[data-role=panel]").panel("close");
+                          }
                       }
-                  }
-                  else {
-                      alert("Not found!");
+                      else {
+                          alert("Not found!");
+                      }
                   }
               },
               function (error) {

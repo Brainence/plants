@@ -1,0 +1,29 @@
+[
+    {   "id" : "plant1", 
+        "name" : "Plant1", 
+        "details" : "It is a very interesting details.",
+        "irrigationPeriod" : "1 day",
+        "image" : "data/images/plant1.jpg"
+    },
+
+    {   "id" : "plant2", 
+        "name" : "Plant2", 
+        "details" : "Details2",
+        "irrigationPeriod" : "12 hours",
+        "image" : "data/images/plant2.jpg"
+    },
+
+    {   "id" : "plant3", 
+        "name" : "Plant3", 
+        "details" : "Details3",
+        "irrigationPeriod" : "14 hours",
+        "image" : "data/images/plant3.jpg"
+    },
+
+    {   "id" : "plant4", 
+        "name" : "Plant4", 
+        "details" : "Details4",
+        "irrigationPeriod" : "2 hours",
+        "image" : "data/images/plant4.jpg"
+    }
+]

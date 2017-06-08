@@ -47,5 +47,8 @@
     "nl.x-services.plugins.launchmyapp": {
       "URL_SCHEME": "com.telerik.plants"
     }
-  }
+  },
+  "CorePlugins": [
+    "com.phonegap.plugins.barcodescanner@6.0.5"
+  ]
 }

@@ -6,12 +6,12 @@
         <meta name="viewport"
               content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <title>Hello World</title>
+        <title>Plants</title>
 
         <!--styles-->
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="libraries/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="libraries/jquery/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <!--styles-->
 
         <!--scripts-->
@@ -19,35 +19,98 @@
         <script type="text/javascript" src="libraries/jquery/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="libraries/jquery/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
         <script type="text/javascript" src="libraries/angular.min.js"></script>
 
         <!--scripts-->
     </head>
     <body>
-        <div ng-app="templateApp" ng-controller="TemplateCtrl">
-            <!-- This page will show first -->
-            <div data-role="page" id="index">
-
-                <div data-role="header" data-position="inline" id="indexheader" >
-                    <h1>Page 1 Heading</h1>
-                </div><!-- /header -->
-
+        <div ng-app="plantsApp" ng-controller="PlantsCtrl">
+            <div data-role="page" id="page_home"> 
+                <div id="general">               
                 <div data-role="content">
-                    <h3>page Content</h3>
-                    <a href="#pagetwo">Second Page</a>
-                </div><!-- /content -->
+                    <center><img src="img/logo.png"/></center>
+                    <a href="#page_plants"> <button class="menu" >List of plants</button></a>
+                    <a><button class="menu" ng-click="ScanQR()">Scan QR</button></a>
+                    <a href="#page_about"><button class="menu" >About</button></a>
+                </div>
+                </div>
+            </div>
 
-                <div data-role="footer"  data-position="fixed">
-                    <h3>Footer Text</h3>
-                </div><!-- /footer -->
-            </div><!-- /footer -->
+            <!-- List of plants -->
+            <div data-role="page" id="page_plants">
+                <div data-role="header" data-position="inline">
+                    <!--<a href="#page_home" class="menu_button"><</a>-->
+                    <a href="#main-menu-panel" class="menu_button"><img src="img/menu.png"/></a>
+                    <h1>List plants</h1>
+                </div><!-- /header -->
+                
+                <div data-role="content">
+                    <div id="output">
+                        
+                     </div>
+                    <div ng-repeat="plant in plants">
+                        <a href="#page_details" ng-click="DetailsPlant(plant.id)">
+                            <div class="plant">
+                                <div class="plant_photo">
+                                    <img ng-src="{{plant.image}}" />
+                                </div>    
+                                <div class="plant_details">
+                                    <p><strong>{{plant.name}}</strong></p>
+                                    <p>Details: {{plant.details}}</p>
+                                    <p>Irrigation period: {{plant.irrigationPeriod}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Details of plants -->
+            <div data-role="page" id="page_details">
+                <div data-role="header" data-position="inline">
+                    <!--<a href="#page_home" class="menu_button"><</a>-->
+                    <a href="#main-menu-panel" class="menu_button"><img src="img/menu.png"/></a>
+                    <h1>{{seceltedPlant.name}}</h1>
+                </div>
+                <div data-role="content">
+                    <img ng-src="{{seceltedPlant.image}}" width="100%"/>
+                    <p>Details: {{seceltedPlant.details}}</p>
+                    <p>Irrigation period: {{seceltedPlant.irrigationPeriod}}</p>
+                    <button ng-click="Pour()">Pour</button>
+                </div>
+            </div>
+            
+            <!-- About -->
+            <div data-role="page" id="page_about">
+                <div data-role="header" data-position="inline">
+                    <!--<a href="#page_home" class="menu_button"><</a>-->
+                    <a href="#main-menu-panel" class="menu_button"><img src="img/menu.png"/></a>
+                    <h1>About</h1>
+                </div><!-- /header -->
+            </div>
+        </div>
 
-            <!-- SECOND PAGE -->
-            <div data-role="page" id="pagetwo">
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <!--page scripts-->
+        <script type="text/javascript" src="js/home/home.js"></script>
+        <!--page scripts-->
+    </body>
+</html>
+
+
+
+
+
+
+<!-- SECOND PAGE -->
+            <!--<div data-role="page" id="pagetwo">
 
                 <div data-role="header" data-position="inline" id="page2header" >
                     <h1>Page 2 Heading</h1>
-                </div><!-- /header -->
+                </div>
 
                 <div data-role="content">
                     <h3>page Content</h3>   
@@ -62,19 +125,9 @@
                             <h3>Hello {{name}}!</h3>
                         </div>
                     </form>
-                </div><!-- /content -->
+                </div>
 
                 <div data-role="footer"  data-position="fixed">
                     <h3>Footer Text</h3>
                 </div>
-            </div>
-        </div>
-
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-        <!--page scripts-->
-        <script type="text/javascript" src="js/home/home.js"></script>
-        <!--page scripts-->
-    </body>
-</html>
+            </div>-->
